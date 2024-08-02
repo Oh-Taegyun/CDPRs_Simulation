@@ -26,19 +26,32 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Pin where cables can attach
+	// í•€ ëª¨ì•„ë‘ 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
-	UStaticMeshComponent* CablePin;
+	USceneComponent* Pin_1;
 
-	// Mass of the actor
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_2;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_3;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_4;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_5;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_6;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_7;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pins")
+	USceneComponent* Pin_8;
+
+	// ë¬¼ë¦¬ ë©”ì‹œ ì„¤ì •
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Physics")
 	UStaticMeshComponent* PhysicsMesh;
-
-	// Áú·® ¼³Á¤, ÇÉ ³Ñ¹ö ¼³Á¤
-	UPROPERTY(EditAnywhere)
-	float mass;
-
-
-
-	// float PIN_NUMBER;
 };

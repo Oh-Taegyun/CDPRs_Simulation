@@ -28,27 +28,42 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// «Æ∏Æ ∏ﬁΩ√ º≥¡§
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	UStaticMeshComponent* Pulley_Mesh;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Cable");
 	UCableComponent* CableComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Constraints")
-	UPhysicsConstraintComponent* CableConstraint;
+	UPROPERTY(VisibleAnywhere)
+	UPhysicsConstraintComponent* PhysicsConstraint;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly);
+	UPROPERTY(EditAnywhere, Category = "Pulley");
 	float MaxCableLength;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly);
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	float MinCableLength;
+
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	float MIN_Tension;
+
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	float MAX_Tension;
+
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	int32 Pulley_Number;
+
+	UPROPERTY(EditAnywhere, Category = "Pulley");
 	float Tension;
 
-private:
-	AEndEffector* EndEffector;
-	void AttachCableToComponent();
-	void LimitCableLength();
-	void SetCableLength(float NewLength);
-	void ApplyCableTension(float TensionStrength);
-	void CutCable();
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	float CableLength;
+
+	UPROPERTY(EditAnywhere, Category = "Pulley");
+	bool PIN_CONNECT;
+
+	AEndEffector* End_Effector;
+	USceneComponent* Pin;
+	void ApplyCableTension(float input_CableLength, float input_Tension); // ÏºÄÏù¥Î∏î Ïóê ÎåÄÌïú Ìûò Ï†ÅÏö©
+	void AttachCableToEndEffector();
+	
 };
