@@ -1,0 +1,8 @@
+# Ignore Unreal build and intermediate files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+.vs/
+.idea/
