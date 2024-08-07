@@ -23,35 +23,35 @@ AEndEffector::AEndEffector()
     // 엔드이펙터 핀 설정
     Pin_1 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_1"));
     Pin_1->SetupAttachment(PhysicsMesh);
-    Pin_1->SetWorldLocation(FVector(-80, 12.5, -5));
+    Pin_1->SetWorldLocation(FVector(-40, 25, -10));
 
     Pin_2 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_2"));
     Pin_2->SetupAttachment(PhysicsMesh);
-    Pin_2->SetWorldLocation(FVector(80, 12.5, -5));
+    Pin_2->SetWorldLocation(FVector(40, 25, -10));
 
     Pin_3 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_3"));
     Pin_3->SetupAttachment(PhysicsMesh);
-    Pin_3->SetWorldLocation(FVector(80, -12.5, -5));
+    Pin_3->SetWorldLocation(FVector(40, -25, -10));
 
     Pin_4 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_4"));
     Pin_4->SetupAttachment(PhysicsMesh);
-    Pin_4->SetWorldLocation(FVector(-80, -12.5, -5));
+    Pin_4->SetWorldLocation(FVector(-40, -25, -10));
 
     Pin_5 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_5"));
     Pin_5->SetupAttachment(PhysicsMesh);
-    Pin_5->SetWorldLocation(FVector(-80, 12.5, 5));
+    Pin_5->SetWorldLocation(FVector(-40, 25, 10));
 
     Pin_6 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_6"));
     Pin_6->SetupAttachment(PhysicsMesh);
-    Pin_6->SetWorldLocation(FVector(80, 12.5, 5));
+    Pin_6->SetWorldLocation(FVector(40, 25, 10));
 
     Pin_7 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_7"));
     Pin_7->SetupAttachment(PhysicsMesh);
-    Pin_7->SetWorldLocation(FVector(80, -12.5, 5));
+    Pin_7->SetWorldLocation(FVector(40, -25, 10));
 
     Pin_8 = CreateDefaultSubobject<USceneComponent>(TEXT("Pin_8"));
     Pin_8->SetupAttachment(PhysicsMesh);
-    Pin_8->SetWorldLocation(FVector(-80, -12.5, 5));
+    Pin_8->SetWorldLocation(FVector(-40, -25, 10));
 }
  
 

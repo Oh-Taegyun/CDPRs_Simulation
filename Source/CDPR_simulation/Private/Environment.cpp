@@ -58,8 +58,7 @@ void AEnvironment::RestartCurrentLevel()
 
 
 void AEnvironment::ResetEnvironment() {
-    // 래밸 재실행
-    RestartCurrentLevel();
+    
 
     // 보상을 0으로
     done = false;

@@ -65,5 +65,6 @@ public:
 	USceneComponent* Pin;
 	void ApplyCableTension(float input_CableLength, float input_Tension); // 케이블 에 대한 힘 적용
 	void AttachCableToEndEffector();
+	FVector InverseKinematics(const FVector& a, const FVector& b, const FVector& Location, const FVector& Rotation);
 	
 };

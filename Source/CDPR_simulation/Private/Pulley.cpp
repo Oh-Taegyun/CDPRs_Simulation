@@ -117,7 +117,7 @@ void APulley::ApplyCableTension(float input_CableLength, float input_Tension)
         FVector EndLocation = Pin->GetComponentLocation();
 
         // 시작 위치와 끝 위치 사이의 방향 벡터를 계산하고, 정규화합니다.
-        FVector Direction = (EndLocation - StartLocation).GetSafeNormal();
+        FVector Direction = -1 * (EndLocation - StartLocation).GetSafeNormal();
 
         // 현재 케이블 길이를 계산합니다.
         float CurrentLength = (EndLocation - StartLocation).Size();
@@ -160,4 +160,34 @@ void APulley::ApplyCableTension(float input_CableLength, float input_Tension)
             CableComponent->MarkRenderStateDirty();
         }
     }
+}
+
+FVector APulley::InverseKinematics(const FVector& a, const FVector& b, const FVector& Location, const FVector& Rotation)
+{
+    float alpha = Rotation[0];
+    float beta = Rotation[1];
+    float gamma = Rotation[2];
+
+    // Calculate the rotation matrix RA
+    FMatrix RA = FMatrix::Identity;
+    RA.M[0][0] = FMath::Cos(alpha) * FMath::Cos(beta);
+    RA.M[0][1] = -FMath::Sin(alpha) * FMath::Cos(gamma) + FMath::Cos(alpha) * FMath::Sin(beta) * FMath::Sin(gamma);
+    RA.M[0][2] = FMath::Sin(alpha) * FMath::Sin(gamma) + FMath::Cos(alpha) * FMath::Sin(beta) * FMath::Cos(gamma);
+
+    RA.M[1][0] = FMath::Cos(alpha) * FMath::Sin(beta);
+    RA.M[1][1] = FMath::Cos(alpha) * FMath::Cos(gamma) + FMath::Sin(alpha) * FMath::Sin(beta) * FMath::Sin(gamma);
+    RA.M[1][2] = -FMath::Cos(alpha) * FMath::Sin(gamma) + FMath::Sin(alpha) * FMath::Sin(beta) * FMath::Cos(gamma);
+
+    RA.M[2][0] = -FMath::Sin(beta);
+    RA.M[2][1] = FMath::Cos(beta) * FMath::Sin(gamma);
+    RA.M[2][2] = FMath::Cos(beta) * FMath::Cos(gamma);
+
+    // Calculate the end position
+    FVector end_position(Location[0], Location[1], Location[2]);
+
+    // Compute the vector L
+    FVector L = a - end_position - RA.TransformVector(b);
+
+    // Calculate the length of the vector L
+    return L;
 }
